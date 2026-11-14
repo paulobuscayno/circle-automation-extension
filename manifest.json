@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Circle Outreach Assistant",
+  "version": "1.1.0",
+  "description": "Semi-automated outreach helper for a Circle community: messages or connects with members one at a time, with pause/stop control and progress tracking from a side panel.",
+  "permissions": ["storage", "scripting", "activeTab", "tabs", "sidePanel", "downloads"],
+  "optional_host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {},
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  }
+}

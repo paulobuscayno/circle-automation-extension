@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Circle Outreach Assistant</title>
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body>
+    <h1>Circle Outreach Assistant</h1>
+
+    <div class="statusbar">
+      <span id="statusDot" class="dot idle"></span>
+      <span id="statusText">Idle</span>
+      <span id="statusHint" class="hint"></span>
+    </div>
+
+    <textarea id="template" rows="5" placeholder="Hi {{first_name}}, ..."></textarea>
+    <div class="hint">Tokens: <code>{{first_name}}</code> <code>{{full_name}}</code></div>
+
+    <div class="controls">
+      <button id="startBtn" class="success">Start</button>
+      <button id="pauseBtn" class="warn">Pause</button>
+      <button id="stopBtn" class="danger">Stop</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><span id="statProgress">0</span><label>Progress</label></div>
+      <div class="stat success"><span id="statSuccess">0</span><label>Success</label></div>
+      <div class="stat warn"><span id="statSkipped">0</span><label>Skipped</label></div>
+      <div class="stat danger"><span id="statFailed">0</span><label>Failed</label></div>
+    </div>
+
+    <div id="log" class="log"></div>
+
+    <details>
+      <summary>More options</summary>
+
+      <label class="checkbox">
+        <input id="testMode" type="checkbox" />
+        Test mode (fills the message but does not click Send)
+      </label>
+
+      <div class="row">
+        <div class="col">
+          <label>Delay between members (sec)</label>
+          <div class="row">
+            <input id="minDelay" type="number" min="1" step="0.5" />
+            <input id="maxDelay" type="number" min="1" step="0.5" />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label>Max / session</label>
+          <input id="maxPerSession" type="number" min="1" />
+        </div>
+        <div class="col">
+          <label>Max / day</label>
+          <input id="maxPerDay" type="number" min="1" />
+        </div>
+      </div>
+
+      <button id="previewBtn">Preview next message</button>
+      <div id="previewBox" class="preview" hidden></div>
+      <button id="highlightBtn">Highlight detected member cards</button>
+      <button id="retryBtn">Retry failed only</button>
+      <button id="exportBtn">Export results (CSV)</button>
+      <button id="resetBtn" class="danger">Reset progress (re-message everyone)</button>
+
+      <details>
+        <summary>Advanced selectors (only touch if detection fails)</summary>
+        <label>Member profile link contains</label>
+        <input id="sel_memberLinkFragment" type="text" />
+        <label>Message button text</label>
+        <input id="sel_messageButtonText" type="text" />
+        <label>Connect button text</label>
+        <input id="sel_connectButtonText" type="text" />
+        <label>Pending button text</label>
+        <input id="sel_pendingButtonText" type="text" />
+        <label>Self-profile button text</label>
+        <input id="sel_viewProfileButtonText" type="text" />
+        <label>DM textarea placeholder contains</label>
+        <input id="sel_dmTextareaPlaceholder" type="text" />
+        <label>Connect note placeholder contains</label>
+        <input id="sel_connectNotePlaceholder" type="text" />
+        <label>Send request button text</label>
+        <input id="sel_sendRequestButtonText" type="text" />
+        <label>DM send button CSS selector (optional override)</label>
+        <input id="sel_dmSendButtonSelector" type="text" placeholder="leave blank for auto-detect" />
+      </details>
+    </details>
+
+    <script src="sidepanel.js"></script>
+  </body>
+</html>
